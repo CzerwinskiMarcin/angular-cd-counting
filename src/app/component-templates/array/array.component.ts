@@ -7,6 +7,12 @@ export default class ArrayComponent extends ChangeDetectionListenerDirective {
   @Input() array: any[] = [];
   @Output() arrayChanged: EventEmitter<any[]> = new EventEmitter();
 
+  override color = '#49ff00';
+
+  trackByIdx(index: number, item: any): number {
+    return index;
+  }
+
   addItem(value: string): void {
     this.array.push(+value);
   }

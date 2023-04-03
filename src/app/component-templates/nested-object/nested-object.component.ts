@@ -8,6 +8,8 @@ export default class NestedObjectComponent extends ChangeDetectionListenerDirect
   @Input() object: {id: number, name: string, data: any[]}
   @Output() objectChange: EventEmitter<{}> = new EventEmitter<{}>();
 
+  override color = '#ff0000';
+
   changeObjectRef(): void {
     this.objectChange.emit({...this.object})
   }

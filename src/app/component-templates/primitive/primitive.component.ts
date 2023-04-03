@@ -11,6 +11,7 @@ export default class PrimitiveComponent extends ChangeDetectionListenerDirective
   };
   @Output() valueChange: EventEmitter<any> = new EventEmitter();
 
+  override color = '#ff9100';
   _value: any;
 
   constructor(protected override el: ElementRef, protected cs: ChangeService) {

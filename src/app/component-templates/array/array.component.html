@@ -11,7 +11,7 @@
   </div>
 
   <app-default-primitive
-    *ngFor="let item of array; let idx = index"
+    *ngFor="let item of array; let idx = index; trackBy: trackByIdx"
     [key]="'Item no. ' + idx"
     [value]="item"
     (valueChange)="array[idx] = $event"

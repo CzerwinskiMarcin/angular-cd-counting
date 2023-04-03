@@ -9,6 +9,8 @@ export default class ObjectComponent extends ChangeDetectionListenerDirective {
   @Output() arrayChange: EventEmitter<any[]> = new EventEmitter();
   @Output() objectChange: EventEmitter<{}> = new EventEmitter();
 
+  override color = '#d000ff';
+
   changeArrayRef(array: any[]): void {
     this.arrayChange.emit(array);
   }
