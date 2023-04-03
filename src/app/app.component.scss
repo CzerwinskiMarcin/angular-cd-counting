@@ -1,0 +1,35 @@
+.container {
+  display: grid;
+  grid-template-areas: 'left right' 'middle middle' 'bottom-left bottom-right';
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  padding: .5rem;
+}
+
+.left {
+  grid-area: left;
+}
+
+.right {
+  grid-area: right;
+}
+
+.middle {
+  grid-area: middle;
+}
+
+.bottom {
+  grid-area: bottom;
+}
+
+.bottom-left {
+  grid-area: bottom-left;
+}
+
+.bottom-right {
+  grid-area: bottom-right;
+}
+
+.change-detection-done {
+  border: 1px solid #7d08bd;
+}

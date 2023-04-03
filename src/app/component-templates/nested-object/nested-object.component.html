@@ -1,0 +1,17 @@
+<section class="container" (click)="handleClick()">
+  <h4>{{type}} Nested Object</h4>
+  <br/>
+  <div>CD counter: {{ cdCounter }}</div>
+
+  <div class="controls">
+    <button (click)="changeObjectRef()">Change nested object reference</button>
+  </div>
+
+  <app-default-primitive key="Id" [value]="object.id" (valueChange)="object.id = $event"></app-default-primitive>
+  <app-default-primitive key="Name" [value]="object.name" (valueChange)="object.name = $event"></app-default-primitive>
+  <app-default-array
+    key="Data"
+    [array]="object.data"
+    (arrayChanged)="changeArrayRef($event)"
+  ></app-default-array>
+</section>

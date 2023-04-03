@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="number">Number: </label>
+    <input id="number" formControlName="number" (change)="updateField('number', number.value)" #number>
+  </div>
+
+  <div>
+    <label for="string">String: </label>
+    <input id="string" formControlName="string">
+  </div>
+
+  <section formArrayName="array">
+    <h3>Array</h3>
+    <div *ngFor="let item of array.controls; let idx = index" [formGroupName]="idx">
+      <span>No. {{idx + 1}} - {{item.value}}</span>
+    </div>
+
+    <div>
+      <label for="addToArray">Add to shallow array</label>
+      <input id="addToArray"#input/>
+      <button type="button" (click)="addToArray(array, input.value)">Add to array</button>
+    </div>
+  </section>
+
+  <br/>
+  <h4>Nested</h4>
+  <section formGroupName="nested">
+    <div>
+      <label for="id">Id: </label>
+      <input id="id" formControlName="id" (change)="updateField('id', ctr.value)" #ctr>
+    </div>
+
+    <div>
+      <label for="name">Name: </label>
+      <input id="name" formControlName="name">
+    </div>
+
+    <section formArrayName="data">
+      <h3>Array</h3>
+      <div *ngFor="let item of nestedArray.controls; let idx = index" [formGroupName]="idx">
+        <span>No. 1.{{idx + 1}} - {{item.value}}</span>
+      </div>
+
+      <div>
+        <label for="addToNestedArray">Add to nested array</label>
+        <input id="addToNestedArray"#input/>
+        <button type="button" (click)="addToArray(array, input.value)">Add to array</button>
+      </div>
+    </section>
+  </section>
+</form>

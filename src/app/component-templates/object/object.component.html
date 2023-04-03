@@ -1,0 +1,19 @@
+<div class="container">
+  <h4>CD {{type}} Object</h4>
+  <br/>
+  <div>CD counter: {{ cdCounter }}</div>
+  <app-default-primitive key="Number" [value]="test.number" (valueChange)="test.number = $event"></app-default-primitive>
+  <app-default-primitive key="String" [value]="test.string" (valueChange)="test.string = $event"></app-default-primitive>
+  <app-default-array
+    key="Array"
+    [array]="test.array"
+    (arrayChanged)="changeArrayRef($event)"
+  ></app-default-array>
+  <br>
+  <app-default-nested-object
+    key="Nested object"
+    [object]="test.nested"
+    (objectChange)="changeObjectRef($event)"
+  >
+  </app-default-nested-object>
+</div>

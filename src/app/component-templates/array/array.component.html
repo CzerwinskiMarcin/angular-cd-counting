@@ -1,0 +1,19 @@
+<div class="container">
+  <h4>CD {{type}} {{key}}</h4>
+  <br/>
+  <div>CD counter: {{ cdCounter }}</div>
+
+  <div class="controls">
+    <label for="new-array-item">Add item</label>
+    <input id="new-array-item" #input>
+    <button (click)="addItem(input.value)">Add</button>
+    <button (click)="changeReference()">Change array reference</button>
+  </div>
+
+  <app-default-primitive
+    *ngFor="let item of array; let idx = index"
+    [key]="'Item no. ' + idx"
+    [value]="item"
+    (valueChange)="array[idx] = $event"
+  ></app-default-primitive>
+</div>

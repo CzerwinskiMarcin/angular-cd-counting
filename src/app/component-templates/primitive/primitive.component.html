@@ -1,0 +1,10 @@
+<section class="container">
+  <h5>CD {{type}} Primitive: {{key}}</h5>
+  <br/>
+  <div>CD counter: {{ cdCounter }}</div>
+
+  <div>
+    <label [for]="key + '-input'">Value: </label>
+    <input [id]="key + '-input'" [value]="_value" (input)="handleInput($event.target)">
+  </div>
+</section>
