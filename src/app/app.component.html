@@ -1,15 +1,15 @@
-<section class="container">
+<section class="container" *ngFor="let test of data; let idx = index">
   <article class="left">
     <app-default-object [test]="test"
-      (arrayChange)="changeArrayRef($event)"
-      (objectChange)="changeObjectRef($event)"
+      (arrayChange)="changeArrayRef(idx, $event)"
+      (objectChange)="changeObjectRef(idx, $event)"
     ></app-default-object>
   </article>
   <article class="right">
     <app-on-push-object
       [test]="test"
-      (arrayChange)="changeArrayRef($event)"
-      (objectChange)="changeObjectRef($event)"
+      (arrayChange)="changeArrayRef(idx, $event)"
+      (objectChange)="changeObjectRef(idx, $event)"
     >
     </app-on-push-object>
   </article>
@@ -20,7 +20,7 @@
   </article>
 
   <article class="bottom-right">
-    <button (click)="changeMainObjectReference()">Change main object reference</button>
+    <button (click)="changeMainObjectReference(idx)">Change main object reference</button>
     <button (click)="asyncPush()">Async Push</button>
     <button (click)="reset()">Reset CD</button>
   </article>

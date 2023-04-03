@@ -10,11 +10,13 @@ import {ChangeDetectionListenerDirective} from './directive/change-detection-lis
 })
 export class AppComponent extends ChangeDetectionListenerDirective {
   override color = '#ff0000';
-  test: TestModel = new TestModel();
+  data: TestModel[] = [];
 
   constructor(el: ElementRef, changeService: ChangeService) {
     super(el, changeService);
+    this.data = generateData(1);
   }
+
 
   reset(): void {
     this.changeService.propagateReset();
@@ -24,22 +26,33 @@ export class AppComponent extends ChangeDetectionListenerDirective {
     this.changeService.propagatePush();
   }
 
-  changeMainObjectReference(): void {
-    this.test = {...this.test};
+  changeMainObjectReference(index: number): void {
+    this.data[index] = {...this.data[index]};
   }
 
-  changeArrayRef(array: any[]): void {
-    this.test.array = array;
+  changeArrayRef(index: number, array: any[]): void {
+    this.data[index].array = array;
   }
 
-  changeObjectRef(object: any): void {
-    this.test.nested = object;
+  changeObjectRef(index: number,object: any): void {
+    this.data[index].nested = object;
   }
+}
 
-  handleValueChanged({name, value}: {name: string, value: any}): void {
-    // @ts-ignore
-    this.test[name] = value;
-    console.log('Hnadle value changed');
-    console.log(this.test);
+function generateData(numItems: number): TestModel[] {
+  const data: TestModel[] = [];
+  for (let i = 0; i < numItems; i++) {
+    const item: TestModel = {
+      number: Math.floor(Math.random() * 1000),
+      string: `String ${i}`,
+      array: Array.from({ length: 1000 }, () => Math.floor(Math.random() * 100)),
+      nested: {
+        id: Math.floor(Math.random() * 1000),
+        name: `Nested ${i}`,
+        data: Array.from({ length: 1000 }, () => Math.floor(Math.random() * 100))
+      }
+    };
+    data.push(item);
   }
+  return data;
 }

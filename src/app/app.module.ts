@@ -14,6 +14,7 @@ import { OnPushArrayComponent } from './components/on-push-array/on-push-array.c
 import { OnPushObjectComponent } from './components/on-push-object/on-push-object.component';
 import { OnPushPrimitiveComponent } from './components/on-push-primitive/on-push-primitive.component';
 import { OnPushNestedObjectComponent } from './components/on-push-nested-object/on-push-nested-object.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { OnPushNestedObjectComponent } from './components/on-push-nested-object/
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
